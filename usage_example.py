@@ -97,7 +97,7 @@ token = ed.getToken(
 )
 
 # Metadata query with proxies
-metadata = ed.queryData(
+metadata = ed.getData(
     token=token,
     tickerQuery=tickerQuery,
     proxies={
@@ -107,7 +107,7 @@ metadata = ed.queryData(
 )
 
 # Data query with proxies
-data = ed.queryData(
+data = ed.getData(
     token=token,
     tickerQuery=tickerQuery,
     proxies={
