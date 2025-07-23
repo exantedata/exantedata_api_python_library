@@ -11,7 +11,7 @@ pip install exantedata-api
 
 ### 1. Obtaining a token
 
-The token can be obtained with using the `getToken` function (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L4)**).
+The token can be obtained with using the `getToken` function (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L4)**).
 
 ###### Parameters
 - `username`: *Obligatory. String value.* Your ExanteData username.
@@ -21,7 +21,7 @@ The token can be obtained with using the `getToken` function (**[code example](h
 
 ### 2. Specifying a ticker
 
-There are 3 ways to specify a ticker query (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L11)**):
+There are 3 ways to specify a ticker query (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L11)**):
 
 - You may specify particular tickers explicitly \
 `tickerQuery = 'TR.FOREIGNFX.SHORT.NET.D'`
@@ -39,7 +39,7 @@ The data can be fetched with using `getMetaData` and `getData` functions that re
 
 #### 3.1 getMetaData
 
-The `getMetaData` function can be used to get metadata for requested ticker(s) (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L19)**).
+The `getMetaData` function can be used to get metadata for requested ticker(s) (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L19)**).
 
 ###### Parameters
 
@@ -49,19 +49,19 @@ The `getMetaData` function can be used to get metadata for requested ticker(s) (
 
 #### 3.2 getData
 
-The `getData` function can be used to get available timeseries for requested ticker(s) (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L26)**).
+The `getData` function can be used to get available timeseries for requested ticker(s) (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L26)**).
 
 ###### Parameters
 
 - `token`: *Obligatory. String value.* Authorization token.
 - `tickerQuery`: *Obligatory. String value.* Ticker specification.
-- `startDate`: *Optional. String value in YYYY-MM-DD format.* Starting date for the requested data (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L34)**)
-- `endDate`: *Optional. String value in YYYY-MM-DD format.* Ending date for the requested data (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L34)**)
-- `period`: *Optional. String value.* Period date format. Start of period depends on the frequency of the data and can be: start of week, start of month, start of quarter or start of year. If omitted, the API will default to end of period by calendar dates (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L42)**)
+- `startDate`: *Optional. String value in YYYY-MM-DD format.* Starting date for the requested data (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L34)**)
+- `endDate`: *Optional. String value in YYYY-MM-DD format.* Ending date for the requested data (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L34)**)
+- `period`: *Optional. String value.* Period date format. Start of period depends on the frequency of the data and can be: start of week, start of month, start of quarter or start of year. If omitted, the API will default to end of period by calendar dates (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L42)**)
     - **end** - End of period.
     - **begin** - Beginning of period.
 - `freq`: *Optional. String value.*
-Set a frequency for the data to be aggrgeated to. Note, API will only adjust data to a lower frequency than it is (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L51)**)
+Set a frequency for the data to be aggrgeated to. Note, API will only adjust data to a lower frequency than it is (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L51)**)
 	- **D** - Daily
 	- **W** - Weekly (end of week, Friday)
 	- **WS** - Weekly (start of week, Monday)
@@ -73,29 +73,29 @@ Set a frequency for the data to be aggrgeated to. Note, API will only adjust dat
 	- **QS** - Quarterly (start of Quarter)
 	- **A** - Annually (end of year)
 	- **AS** - Annually (start of year)
-- `agg_method`: *Optional. String value.* Method of data aggregation (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L60)**)
+- `agg_method`: *Optional. String value.* Method of data aggregation (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L60)**)
 	- **last** - Returns the last known value within the aggregated group.
 	- **first** - Returns the first known value from the aggregated group.
 	- **mean** - Returns the mean of the values within the aggregated group.
 	- **median** - Returns the median of the values within the aggregated group.
 	- **sum** - Returns a sum of the values within the aggregated group.
-- `fill_method`: *Optional. String value.* (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L70)**)
+- `fill_method`: *Optional. String value.* (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L70)**)
 	- **bfill** - Fills missing values with the next known value.
 	- **ffill** - Fills missing values with the last known value.
 	- **interpolate** - Fills missing values as interpolated between the surrounding known datapoints.
 	- **nearest** - Fills missing values with the nearest known value or last known value if equidistant.
 	- **nnearest** - Fills missing values with the nearest known value or next known value if equidistant.
 - `fill_value`: *Optional. String, int, or double value.* 
-If `fill_method` is not specified, this value will be used to fill in NaN values. If this value is also omitted, the API will not fill NaN values (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L79)**)
+If `fill_method` is not specified, this value will be used to fill in NaN values. If this value is also omitted, the API will not fill NaN values (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L79)**)
 - `proxies`: *Optional. Dictionary value.* Only if your IT department specifies.
 
 ### 4. Specifying proxies
 
-If needed, proxies can be specified for all functions mentioned above (**[code example](https://github.com/exantedata/exantedata_api_test/blob/master/usage_example.py#L87)**).
+If needed, proxies can be specified for all functions mentioned above (**[code example](https://github.com/exantedata/exantedata_api_python_library/blob/master/usage_example.py#L87)**).
 
 ### * Library source code
 
-If you want to, you may take a look at the library source code **[here](https://github.com/exantedata/exantedata_api_test/blob/master/lib/exantedata_api/exantedata_api.py)**
+If you want to, you may take a look at the library source code **[here](https://github.com/exantedata/exantedata_api_python_library/blob/master/lib/exantedata_api/exantedata_api.py)**
 
 ### * API documentation
 
